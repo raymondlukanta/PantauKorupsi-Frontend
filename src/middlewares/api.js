@@ -1,12 +1,14 @@
 import { Schema, arrayOf, normalize } from 'normalizr'
 import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
+import { BaseURL } from 'utils/constants'
 
-const API_ROOT = 'http://ec2-52-77-251-73.ap-southeast-1.compute.amazonaws.com:3000/'
+const API_ROOT = BaseURL
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, option, schema) {
+  console.log(API_ROOT)
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
   return fetch(fullUrl, option)
@@ -33,15 +35,35 @@ function callApi(endpoint, option, schema) {
 
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 const userSchema = new Schema('users', {
-  idAttribute: 'name'
+  idAttribute: 'id'
 })
+
+const actorSchema = new Schema('actors', {
+  idAttribute: 'id'
+})
+
+const feedSchema = new Schema('feeds', {
+  idAttribute: 'id'
+})
+
+const issueSchema = new Schema('issues', {
+  idAttribute: 'id'
+})
+
+const organizationSchema = new Schema('organizations', {
+  idAttribute: 'id'
+})
+
 
 const authenticationSchema = new Schema('authentication')
 
 // Schemas for Github API responses.
 export const Schemas = {
   USER: userSchema,
-  AUTHENTICATION: authenticationSchema
+  ACTOR: actorSchema,
+  FEED: feedSchema,
+  ISSUE: issueSchema,
+  ORGANIZATION: organizationSchema,
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.

@@ -9,7 +9,7 @@ function fetchUser(userName) {
   return {
     [CALL_API]: {
       types: [ UserActionTypes.USER_REQUEST, UserActionTypes.USER_SUCCESS, UserActionTypes.USER_FAILURE ],
-      endpoint: `testUser`,
+      endpoint: `users/1`,
       method: 'GET',
       schema: Schemas.USER
     }
@@ -34,7 +34,7 @@ function fetchDeleteUser(userName) {
   return {
     [CALL_API]: {
       types: [ UserActionTypes.DELETE_USER_REQUEST, UserActionTypes.DELETE_USER_SUCCESS, UserActionTypes.DELETE_USER_FAILURE ],
-      endpoint: `testUser`,
+      endpoint: `/v1/users/1`,
       method: 'GET',
       schema: Schemas.USER
     }
