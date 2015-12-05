@@ -31,7 +31,7 @@ export class Items extends Component {
               <label>
                 <input type="checkbox"
                        defaultChecked={item.done} />
-                {`${item.text}`}
+                <h2>{`${item.text}`}</h2>
                 <span className="remove"
                       data-index={index}
                       onClick={this.onDelete}>

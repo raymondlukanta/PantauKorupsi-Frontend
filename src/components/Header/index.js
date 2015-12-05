@@ -28,9 +28,9 @@ export class Header extends Component {
       <header className={`${styles}`} ref="header">
         <div className="container">
           <div className="row">
-            <div className="col-xs-5 col-sm-3 col-md-3 col-lg-3 logo">
+            <div className="col-xs-5 col-sm-2 col-md-2 col-lg-2 logo">
               <Link to="/">
-                Redux Easy Boilerplate
+                PANTAU KORUPSI
               </Link>
             </div>
 
@@ -40,15 +40,21 @@ export class Header extends Component {
                   Home
                 </Link>
                 <Link to="/list" activeClassName="active">
-                  Redux
+                  Issues
+                </Link>
+                <Link to="/list" activeClassName="active">
+                  People
+                </Link>
+                <Link to="/list" activeClassName="active">
+                  Organization
                 </Link>
               </nav>
             </div>
 
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs text-right">
-              <a href="https://github.com/anorudes/redux-easy-boilerplate">
-                Fork me on GitHub
-              </a>
+              <Link to="/login" activeClassName="active">
+                  Login
+              </Link>
             </div>
           </div>
         </div>
