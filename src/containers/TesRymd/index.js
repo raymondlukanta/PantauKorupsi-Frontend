@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DocumentMeta from 'react-document-meta';
-import * as actionCreators from 'actions/users';
+import {loadUser, deleteUser} from 'actions/users';
 
 const metaData = {
   title: 'Redux test',
@@ -20,17 +20,26 @@ function loadData(props) {
   props.loadUser("userName")
 }
 
+function loadDeleteUser(props) {
+  props.deleteUser("Steve")
+}
+
 @connect(
   mapStateToProps,
-  dispatch => bindActionCreators(actionCreators, dispatch)
+  dispatch => bindActionCreators({loadUser, deleteUser}, dispatch)
 )
 export class TesRymd extends Component {
   constructor(props) {
     super(props);
+    this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
   }
 
   componentWillMount() {
     loadData(this.props)
+  }
+
+  handleLoadMoreClick() {
+    loadDeleteUser(this.props)
   }
 
   render() {
@@ -42,20 +51,23 @@ export class TesRymd extends Component {
       <div>
         <p>Test Login</p>
         <hr />
+          <button style={{ fontSize: '150%' }}
+                onClick={this.handleLoadMoreClick}>
+                halo
+          </button>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  // const { login } = { "login": "AKu" }
   const { path } = state.routing
   const {
     entities: { users }
   } = state
 
   return {
-    user: users["Steve"],
+    user: users,
     login:path
   }
 }

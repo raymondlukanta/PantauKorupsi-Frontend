@@ -2,7 +2,7 @@ import { Schema, arrayOf, normalize } from 'normalizr'
 import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
 
-const API_ROOT = 'http://localhost/payroll/public/'
+const API_ROOT = 'http://ec2-52-77-251-73.ap-southeast-1.compute.amazonaws.com:3000/'
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
@@ -36,9 +36,12 @@ const userSchema = new Schema('users', {
   idAttribute: 'name'
 })
 
+const authenticationSchema = new Schema('authentication')
+
 // Schemas for Github API responses.
 export const Schemas = {
-  USER: userSchema
+  USER: userSchema,
+  AUTHENTICATION: authenticationSchema
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.

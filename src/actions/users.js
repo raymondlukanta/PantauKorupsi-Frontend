@@ -1,14 +1,14 @@
 import { CALL_API, Schemas } from '../middlewares/api'
 import keyMirror from 'keymirror'
 
-export const ActionTypes = keyMirror({USER_REQUEST: null, USER_SUCCESS: null, USER_FAILURE: null})
+export const UserActionTypes = keyMirror({USER_REQUEST: null, USER_SUCCESS: null, USER_FAILURE: null, DELETE_USER_REQUEST: null, DELETE_USER_SUCCESS: null, DELETE_USER_FAILURE: null})
 
 // Fetches a user.
 // Relies on the custom API middleware defined in ../middleware/api.js.
 function fetchUser(userName) {
   return {
     [CALL_API]: {
-      types: [ ActionTypes.USER_REQUEST, ActionTypes.USER_SUCCESS, ActionTypes.USER_FAILURE ],
+      types: [ UserActionTypes.USER_REQUEST, UserActionTypes.USER_SUCCESS, UserActionTypes.USER_FAILURE ],
       endpoint: `testUser`,
       method: 'GET',
       schema: Schemas.USER
@@ -18,7 +18,7 @@ function fetchUser(userName) {
 
 // Fetches a user.
 // Relies on Redux Thunk middleware.
-export function loadUser(userName) {
+export function loadUser(userName, requiredFields = []) {
   return (dispatch, getState) => {
 
     const user = getState().entities.users[userName]
@@ -27,5 +27,26 @@ export function loadUser(userName) {
     }
 
     return dispatch(fetchUser(userName))
+  }
+}
+
+function fetchDeleteUser(userName) {
+  return {
+    [CALL_API]: {
+      types: [ UserActionTypes.DELETE_USER_REQUEST, UserActionTypes.DELETE_USER_SUCCESS, UserActionTypes.DELETE_USER_FAILURE ],
+      endpoint: `testUser`,
+      method: 'GET',
+      schema: Schemas.USER
+    }
+  }
+}
+
+export function deleteUser(userName, requiredFields = []) {
+  return (dispatch, getState) => {
+    const user = getState().entities.users[userName]
+    if (user && requiredFields.every(key => user.hasOwnProperty(key))) {
+      return dispatch(fetchDeleteUser(userName))
+    }
+    return null
   }
 }
