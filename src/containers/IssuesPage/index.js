@@ -20,16 +20,22 @@ export class IssuesPage extends Component {
     render() {
         var issues = [
             {   "id": 1,
-                "title": "Judul Issue #1",
-                "description": "lorem ipsum"
+                "title": "Setya Novanto Dibidik Sangkaan Korupsi",
+                "description": "Kejaksaan Agung membidik Ketua DPR Setya Novanto dengan sangkaan korupsi. Bidikan itu dilakukan terkait dugaan pencatutan nama Presiden Joko Widodo dan Wakil Presiden Jusuf Kalla",
+                "author": "James Reddy",
+                "dateCreated": "4 December 2015"
             },
             {   "id": 2,
-                "title": "Judul Issue #2",
-                "description": "lorem ipsum"
+                "title": "Terdakwa Korupsi Pergola Dipaksa DPRD",
+                "description": "Kepala Badan Lingkungan Hidup (BLH) Yogyakarta nonaktif, Irfan Susilo mengaku dipaksa oleh pihak legislatif untuk terus menjalankan proyek pergola tahun anggaran 2013",
+                "author": "James Reddy",
+                "dateCreated": "4 December 2015"
             },
             {   "id": 3,
-                "title": "Judul Issue #3",
-                "description": "lorem ipsum"
+                "title": "Korupsi Benanga, Ganti Rugi Diubah Jadi Bansos, Tiga Pejabat Pemkot Diperiksa",
+                "description": "Persidangan perkara korupsi bantuan sosial (bansos) Benanga di Pengadilan Tipikor Samarinda, masih berkutat di pemeriksaan saksi",
+                "author": "James Reddy",
+                "dateCreated": "4 December 2015"
             }
         ]
 

@@ -39,7 +39,7 @@ export class Header extends Component {
                 <Link to="/home" activeClassName="active">
                   Home
                 </Link>
-                <Link to="/list" activeClassName="active">
+                <Link to="/issues" activeClassName="active">
                   Issues
                 </Link>
                 <Link to="/list" activeClassName="active">
