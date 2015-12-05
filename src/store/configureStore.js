@@ -2,11 +2,13 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
+import api from '../middlewares/api';
 
 const logger = createLogger({ collapsed: true });
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
+  api,
   logger
 )(createStore);
 
