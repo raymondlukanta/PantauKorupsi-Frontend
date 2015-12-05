@@ -21,7 +21,7 @@ function loadData(props) {
 }
 
 function loadDeleteUser(props) {
-  props.deleteUser("Steve")
+  props.deleteUser(1)
 }
 
 @connect(
