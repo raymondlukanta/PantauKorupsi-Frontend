@@ -15,10 +15,13 @@ export class Issue extends Component {
             <div className={`${styles}`}>
                 <label>
                     <h2>{`${issue.title}`}</h2>
-                    <p>{`${issue.description}`}</p>
                     <p className="meta">
-                        Posted by {`${issue.author}`} | {`${issue.dateCreated}`}
+                        Dicatat oleh {`${issue.author}`} | {`${issue.createdAt}`}
                     </p>
+                    <br/>
+                    <p>{`${issue.description}`}</p>
+                    <br/>
+                    <p><b>Kerugian Negara: </b>{`${issue.financialCost}`}</p>
                 </label>
             </div>
             );

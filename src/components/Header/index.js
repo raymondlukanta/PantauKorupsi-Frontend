@@ -37,16 +37,16 @@ export class Header extends Component {
             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
               <nav>
                 <Link to="/home" activeClassName="active">
-                  Home
+                  Beranda
                 </Link>
                 <Link to="/issues" activeClassName="active">
-                  Issues
+                  Kasus
                 </Link>
                 <Link to="/list" activeClassName="active">
-                  People
+                  Tersangka
                 </Link>
                 <Link to="/list" activeClassName="active">
-                  Organization
+                  Organisasi
                 </Link>
               </nav>
             </div>
