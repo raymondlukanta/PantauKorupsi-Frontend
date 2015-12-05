@@ -77,14 +77,16 @@
     "yargs": "^3.18.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4",
     "react": "^0.14.2",
+    "react-paginate": "^0.4.3",
+    "react-paginate-component": "0.0.3",
+    "react-redux": "^4.0.0",
+    "react-router": "1.0.0-rc4",
     "redux": "^3.0.4",
     "redux-react-router": "^1.0.0-beta1",
     "redux-simple-router": "0.0.7",
-    "redux-thunk": "^1.0.0",
-    "react-redux": "^4.0.0",
-    "react-router": "1.0.0-rc4",
-    "jquery": "^2.1.4",
-    "bootstrap": "^3.3.5"
+    "redux-thunk": "^1.0.0"
   }
 }
