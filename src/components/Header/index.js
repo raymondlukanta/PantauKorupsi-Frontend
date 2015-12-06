@@ -68,7 +68,7 @@ export class Header extends Component {
                                             </form>
                                         </div>
                                         <div className="bottom text-center">
-                                            New here ? <a href="#"><b>Join Us</b></a>
+                                            New here ? <Link to="/signup" activeClassName="active"><b>Join Us</b></Link>
                                         </div>
                                     </div>
                                 </li>
