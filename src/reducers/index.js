@@ -11,12 +11,14 @@ import { items } from './items';
 // Updates an entity cache in response to any action with response.entities.
 function entities(state = { authentication:{}}, action) {
 	    	console.log("TYPE:"+action.type)
+	    	console.log(action)
 	
 	if (action.response && action.response.entities) {
 		switch (action.type) {
 	    case SessionActionTypes.LOGIN_SUCCESS:
 	    	alert("Login berhasil")
-		    localStorage.setItem('authToken_pantau_korupsi', action.response.entities.sessions["1"].authToken);
+	    	console.log(action.response.entities)
+		    localStorage.setItem('authToken_pantau_korupsi', action.response.entities.sessions[action.response.result].authToken);
 			  return merge({}, state, action.response.entities)
 	    	break;
 	  	case UserActionTypes.DELETE_USER_SUCCESS:
@@ -31,10 +33,7 @@ function entities(state = { authentication:{}}, action) {
 	    	alert("Penambahan Kasus berhasil")
 			return merge({}, state, action.response.entities)
 	    	break;
-	    case IssuesActionTypes.CREATE_ISSUE_FAILED:
-	    	alert("Penambahan Kasus gagal")
-			return merge({}, state, action.response.entities)
-	    	break;
+	    
       case IssuesActionTypes.READ_ISSUE_LIST_SUCCESS:
         var {
           issues,
@@ -45,9 +44,16 @@ function entities(state = { authentication:{}}, action) {
 			  return merge({}, state, action.response.entities)
 	    	break;
 	  }
+	} else {
+		switch (action.type) {
+			case IssuesActionTypes.CREATE_ISSUE_FAILURE:
+	    	alert("Penambahan Kasus gagal. Mungkin Anda belum login.")
+	    	break;
+		}
+
+	  	return state		
 	}
 
-	  return state
 }
 
 // Updates error message to notify about the failed fetches.
