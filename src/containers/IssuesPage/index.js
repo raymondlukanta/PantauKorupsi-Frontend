@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
+import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router';
 import Select from 'react-select';
 
@@ -66,6 +67,9 @@ export class IssuesPage extends Component {
 
     render() {
         const { issues } = this.props
+
+        var pageNum = 1;
+
         return (
             <section className={styles}>
                 <DocumentMeta {...metaData} />
@@ -91,6 +95,22 @@ export class IssuesPage extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                                 <IssueTable {...this.props} items={issues}/>
+                            </div>
+                        </div>
+                        <div className="row pagination-page">
+                            <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+                                <div className="pull-right">
+                                    <ReactPaginate previousLabel={"«"}
+                                       nextLabel={"»"}
+                                       breakLabel={<li className="break"><a href="">...</a></li>}
+                                       pageNum={pageNum}
+                                       marginPagesDisplayed={2}
+                                       pageRangeDisplayed={5}
+                                       clickCallback={this._handlePageClick}
+                                       containerClassName={"pagination"}
+                                       subContainerClassName={"pages pagination"}
+                                       activeClassName={"active"} />
+                                </div>
                             </div>
                         </div>
                     </div>
