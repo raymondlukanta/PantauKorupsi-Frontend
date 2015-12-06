@@ -24,7 +24,7 @@ export class IssueTable extends Component {
         const { items } = this.props;
         var content = []
         if (items == undefined || items.length < 1) {
-            content.push(<tr><td colSpan={4}>Array is empty</td></tr>)
+            content = (<tr><td colSpan={4}>Array is empty</td></tr>)
         } else {
             for (var id in items) {
                 content.push(<IssueRow key={id} issue={items[id]}/>)

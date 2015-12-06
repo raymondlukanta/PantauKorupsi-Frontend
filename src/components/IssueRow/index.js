@@ -6,7 +6,7 @@ import styles from './styles';
 
 export class IssueRow extends Component {
     static propTypes = {
-        issue: React.PropTypes.object,
+        issue: React.PropTypes.object
     }
 
     render() {
@@ -17,8 +17,8 @@ export class IssueRow extends Component {
                 <td><Link to={`issues/${issue.id}`}>{issue.title}</Link></td>
                 <td className="finCostColumn">{issue.financialCost}</td>
                 <td className="startedAtColumn">{issue.startedAt}</td>
-                <td>{issue.status}</td>
+                <td>{issue.status.name}</td>
             </tr>
-            );
+        )
     }
 }
