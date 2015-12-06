@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
 import { Link } from 'react-router';
+import Select from 'react-select';
 
 import 'style!react-select/scss/default.scss'
 import styles from './styles'
