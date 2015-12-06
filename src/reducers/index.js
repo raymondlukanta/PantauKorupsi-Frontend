@@ -25,6 +25,12 @@ function entities(state = { authentication:{}}, action) {
 		      
 		    };
 	    	break;
+      case IssuesActionTypes.READ_ISSUE_LIST_SUCCESS:
+        var {
+          issues,
+          ...oldState
+        } = state
+        return merge({}, oldState, action.response.entities)
 	    default:
 			  return merge({}, state, action.response.entities)
 	    	break;

@@ -1,5 +1,6 @@
 import { CALL_API, Schemas } from '../middlewares/api'
 import keyMirror from 'keymirror'
+import Qs from 'qs'
 
 export const IssuesActionTypes = keyMirror({
     READ_ISSUE_REQUEST: null, READ_ISSUE_SUCCESS: null, READ_ISSUE_FAILURE: null, 
@@ -24,20 +25,23 @@ export function loadReadIssue(issueId) {
   }
 }
 
-function fetchReadIssueList() {
+function fetchReadIssueList(params) {
+  var endpoint = 'issues?' + Qs.stringify(params, { encode: false })
+  console.log(endpoint)
+  console.log(params)
   return {
     [CALL_API]: {
       types: [ IssuesActionTypes.READ_ISSUE_LIST_REQUEST, IssuesActionTypes.READ_ISSUE_LIST_SUCCESS, IssuesActionTypes.READ_ISSUE_LIST_FAILURE ],
-      endpoint: `issues`,
+      endpoint: endpoint,
       method: 'GET',
       schema: Schemas.ISSUE_ARRAY
     }
   }
 }
 
-export function loadReadIssueList( requiredFields = []) {
+export function loadReadIssueList(params) {
   return (dispatch, getState) => {
-    return dispatch(fetchReadIssueList())
+    return dispatch(fetchReadIssueList(params))
   }
 }
 

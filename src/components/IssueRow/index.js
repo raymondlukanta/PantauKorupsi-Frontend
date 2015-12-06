@@ -12,9 +12,6 @@ export class IssueRow extends Component {
 
     render() {
         const { issue } = this.props;
-
-        console.log(issue)
-
         return (
             <tr className={styles}>
                 <td><Link to={`issues/${issue.id}`}>{issue.title}</Link></td>
