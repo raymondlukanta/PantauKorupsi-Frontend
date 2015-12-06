@@ -70,16 +70,18 @@ export class OrganizationDetailPage extends Component {
         const { organizations } = this.props
 
         var organization
-        var issues
 
         if (organizations !== undefined) {
             organization = organizations[this.organizationId]
-            issues = organization.issues
         }
 
-        if (organization === undefined) {
-            return (<LoadingPage />);
-        }
+        if (organization === undefined) { return (<LoadingPage />); }
+
+        var {
+            issues
+        } = organization
+
+        if (issues === undefined) { issues = [] }
 
         return (
             <section>
@@ -103,7 +105,6 @@ export class OrganizationDetailPage extends Component {
                                     <div id="organization-issues" className="tab-pane fade in active">
                                         <table>
                                             <tbody>
-                                                {!issues.length && <span>Tidak tersedia</span>}
                                                 {
                                                     issues.map((issue, index) =>
                                                         <Issue issue={issue}/>
