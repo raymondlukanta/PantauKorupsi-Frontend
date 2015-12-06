@@ -22,21 +22,25 @@ export class IssueTable extends Component {
 
     render() {
         const { items } = this.props;
-        var content;
+        var content = []
         if (items == undefined || items.length < 1) {
-            content = <tr><td colSpan={4}>Array is empty</td></tr>
+            content.push(<tr><td colSpan={4}>Array is empty</td></tr>)
         } else {
-            content = Object.keys(items).map((id) =>
-                            <IssueRow key={id} issue={items[id]}/>
-                        )
+            for (var id in items) {
+                content.push(<IssueRow key={id} issue={items[id]}/>)
+            }
         }
+        console.log(content)
+
         return (
             <div className={styles}>
                 <table className="table table-striped">
+                <colgroup>
                     <col width="40%" />
                     <col width="25%" />
                     <col width="25%" />
                     <col width="10%" />
+                </colgroup>
 					<thead>
                         <tr>
                             <th>Nama Kasus</th>
@@ -47,7 +51,7 @@ export class IssueTable extends Component {
                     </thead>
 
                     <tbody>
-                        { content }
+                        {content}
                     </tbody>
                     
                 </table>

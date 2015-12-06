@@ -49,9 +49,9 @@ export class IssuesPage extends Component {
     }
 
     render() {
-    const { issues } = this.props
-    
-    console.log(this.props)
+        const { issues } = this.props
+        
+        console.log(this.props)
 
         // var issues = [
         //     {   "id": 1,
@@ -84,19 +84,6 @@ export class IssuesPage extends Component {
         // ]
 
         return (
-            // <section>
-            //     <DocumentMeta {...metaData} />
-            //     <div className="page-container">
-            //         <div className="container">
-            //             <div className="row">
-            //                 <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6
-            //                 col-md-offset-3 col-lg-offset-3">
-            //                     <Issues {...this.props} items={issues}/>
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </section>
             <section>
                 <DocumentMeta {...metaData} />
                 <div className="page-container">
