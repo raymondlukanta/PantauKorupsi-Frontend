@@ -1,6 +1,7 @@
 import { Schema, arrayOf, normalize } from 'normalizr'
 import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
+import FormUrlEncoded from "form-urlencoded";
 import { BaseURL } from 'utils/constants'
 
 const API_ROOT = BaseURL
@@ -53,17 +54,19 @@ const organizationSchema = new Schema('organizations', {
   idAttribute: 'id'
 })
 
+const sessionSchema = new Schema('sessions', {
+  idAttribute: 'id'
+})
+
 // issueSchema.define({
 //   actors: arrayOf(actorSchema),
 //   feeds: arrayOf(feedSchema),
 //   organizations: arrayOf(organizationSchema)
 // });
 
-
-const authenticationSchema = new Schema('authentication')
-
 // Schemas for Github API responses.
 export const Schemas = {
+  SESSION: sessionSchema,
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
   ACTOR: actorSchema,
@@ -148,6 +151,9 @@ function generateOptions(method, body, contentType) {
  
     if (body !== undefined) {
       options.body = FormUrlEncoded.encode(body);
+      console.log("options.body")
+      console.log(options.body)
+
     }
  
     if (contentType == 'multipart-form'){
