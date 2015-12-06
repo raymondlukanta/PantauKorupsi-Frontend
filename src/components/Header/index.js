@@ -4,10 +4,19 @@ import { Link } from 'react-router';
 /* component styles */
 import styles from './styles';
 
+/* redux */
+import { reduxForm } from 'redux-form';
+
 export class Header extends Component {
     constructor(props) {
         super(props);
         this.hideHeader = this.hideHeader.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        this.props.doLogin(this.props.values)
+        event.preventDefault();
     }
 
     componentDidMount() {
@@ -24,6 +33,11 @@ export class Header extends Component {
     }
 
     render() {
+        const {
+          fields: {email, password}
+        } = this.props;
+
+
         return (
             <header className={`${styles}`} ref="header">
                 <div className="container">
@@ -47,18 +61,18 @@ export class Header extends Component {
                                 <li>
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <form className="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                            <form className="form" onSubmit={this.handleClick} acceptCharset="UTF-8" id="login-nav">
                                                 <div className="form-group">
                                                      <label className="sr-only" for="exampleInputEmail2">Email address</label>
-                                                     <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Email address" required />
+                                                     <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Email address" required {...email} />
                                                 </div>
                                                 <div className="form-group">
                                                      <label className="sr-only" for="exampleInputPassword2">Password</label>
-                                                     <input type="password" className="form-control" id="exampleInputPassword2" placeholder="Password" required />
+                                                     <input type="password" className="form-control" id="exampleInputPassword2" placeholder="Password" required {...password} />
                                                      <div className="help-block text-right"><a href="">Forget the password ?</a></div>
                                                 </div>
                                                 <div className="form-group">
-                                                     <button type="submit" className="btn btn-primary btn-block">Sign in</button>
+                                                     <button className="btn btn-primary btn-block" onClick={this.handleClick}>Sign in</button>
                                                 </div>
                                                 <div className="checkbox">
                                                      <label>
@@ -80,3 +94,9 @@ export class Header extends Component {
         );
     }
 }
+
+Header = reduxForm({
+  form: 'login',
+  fields: ['email', 'password'],
+  destroyOnUnmount: false,
+})(Header);

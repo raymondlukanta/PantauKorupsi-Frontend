@@ -16,7 +16,7 @@ export class Footer extends Component {
               Silahkan subscribe untuk mendapatkan pembaharuan tentang korupsi, termasuk pengingat kasus korupsi yang tidak ada perkembangannya lagi.
               <br />
               <br />
-              <form action="//amazonaws.us1.list-manage.com/subscribe/post?u=e8c2fffc7d17de9ee383de69d&amp;id=811dd4dbb9" method="post" name="mc-embedded-subscribe-form" className="validate" target="_blank" novalidate className="form-inline">
+              <form action="//amazonaws.us1.list-manage.com/subscribe/post?u=e8c2fffc7d17de9ee383de69d&amp;id=811dd4dbb9" method="post" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate className="form-inline">
                 <input type="email" name="EMAIL" placeholder="Email" className="form-control input-sm"/>
                 <input type="submit" value="Subscribe" name="subscribe" className="btn btn-warning btn-sm"/>
               </form>

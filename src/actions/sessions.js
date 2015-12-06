@@ -5,19 +5,20 @@ export const SessionActionTypes = keyMirror({
     LOGIN_REQUEST: null, LOGIN_SUCCESS: null, LOGIN_FAILURE: null
   })
 
-function fetchSession(issueId) {
+function fetchLogin(body) {
   return {
     [CALL_API]: {
-      types: [ IssuesActionTypes.READ_ISSUE_REQUEST, IssuesActionTypes.READ_ISSUE_SUCCESS, IssuesActionTypes.READ_ISSUE_FAILURE ],
-      endpoint: 'issues/' + issueId,
-      method: 'GET',
-      schema: Schemas.ISSUE
+      types: [ SessionActionTypes.LOGIN_REQUEST, SessionActionTypes.LOGIN_SUCCESS, SessionActionTypes.LOGIN_FAILURE ],
+      endpoint: 'sessions',
+      method: 'POST',
+      body: body,
+      schema: Schemas.SESSION
     }
   }
 }
 
-export function loadSession(issueId) {
+export function doLogin(body) {
   return (dispatch, getState) => {
-    return dispatch(fetchSession(issueId))
+    return dispatch(fetchLogin(body))
   }
 }
