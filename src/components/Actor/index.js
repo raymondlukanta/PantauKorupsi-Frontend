@@ -19,7 +19,7 @@ export class Actor extends Component {
                     <img src="http://cdn3.egoseoservices.com/wp-content/uploads/2015/09/profile-picture-1443082834-300x300.jpg" className="img-circle" />
                 </td>
                 <td className="col-md-10">
-                    <h5>{actor.name}</h5>
+                    <h5><Link to={`actors/${actor.id}`}>{actor.name}</Link></h5>
                     <p>{actor.description}</p>
                 </td>
             </tr>

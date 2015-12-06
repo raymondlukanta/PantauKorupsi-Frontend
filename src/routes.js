@@ -9,6 +9,7 @@ import { List } from 'containers/List';
 import { IssuesPage } from 'containers/IssuesPage';
 import { IssueDetail } from 'containers/IssueDetail';
 import { ActorsPage } from 'containers/ActorsPage';
+import { ActorDetailPage } from 'containers/ActorDetailPage';
 import { OrganizationsPage } from 'containers/OrganizationsPage';
 import { OrganizationDetailPage } from 'containers/OrganizationDetailPage';
 import { TesRymd } from 'containers/TesRymd';
@@ -21,6 +22,7 @@ export default (
     <Route path="issues" component={IssuesPage} />
     <Route path="issues/:id" component={IssueDetail} />
     <Route path="actors" component={ActorsPage} />
+    <Route path="actors/:id" component={ActorDetailPage} />
     <Route path="organizations" component={OrganizationsPage} />
     <Route path="organizations/:id" component={OrganizationDetailPage} />
     <Route path="raymond" component={TesRymd} />
