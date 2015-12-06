@@ -92,7 +92,7 @@ export class ActorDetailPage extends Component {
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8
                             col-md-offset-2 col-lg-offset-2">
                                 <div className="col-md-2 actor-large-thumb">
-                                    <img src={actor.image_url} className="img-circle" />
+                                    <img src={actor.imageUrl} className="img-circle" />
                                 </div>
                                 <div className="col-md-10">
                                     <h2>{actor.name}</h2>
