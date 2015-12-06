@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import DocumentMeta from 'react-document-meta';
+import ReactDisqusThread from 'react-disqus-thread';
 
 /* components */
 import { Issue } from 'components/Issue';
@@ -8,7 +9,6 @@ import { Feed } from 'components/Feed';
 import { Actor } from 'components/Actor';
 import { LoadingPage } from '../LoadingPage';
 import { Organization } from 'components/Organization';
-import ReactDisqusThread from 'react-disqus-thread';
 
 /*Redux */
 import { loadReadIssue } from 'actions/issues';
@@ -108,7 +108,7 @@ export class IssueDetail extends Component {
                                 </p>
                                 <br/>
                                 <p><b>Kerugian Negara: </b>Rp {Number(issue.financialCost).formatMoney()}</p>
-                                <p><b>Status: </b>{this._renderStatus(issue.status)}</p>
+                                <p><b>Tahap: </b>{this._renderStatus(issue.status)}</p>
                                 {url}
                                 <p>{issue.description}</p>
                                 <br/>
@@ -142,7 +142,7 @@ export class IssueDetail extends Component {
                                             { !involvements && !involvements.length && <span>Tidak tersedia</span>}
                                             {
                                                 involvements.map((involvement, index) =>
-                                                    <Actor actor={involvement.actor}/>
+                                                    <Actor actor={involvement.actor} involvement={involvement}/>
                                                 )
                                             }
                                         </table>

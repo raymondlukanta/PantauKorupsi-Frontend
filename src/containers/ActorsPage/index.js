@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
 import ReactPaginate from 'react-paginate';
+import { Link } from 'react-router';
 
 /* components */
 import { Actor } from 'components/Actor';
@@ -73,6 +74,11 @@ export class ActorsPage extends Component {
                                 <div className="page-header">
                                     <h2>Tokoh</h2>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                                <Link to="/actors/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Tokoh</Link>
                             </div>
                         </div>
                         <div className="row">
