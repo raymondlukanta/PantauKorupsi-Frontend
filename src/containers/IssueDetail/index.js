@@ -143,8 +143,7 @@ export class IssueDetail extends Component {
                 <div className="page-container">
                     <div className="container">
                         <div className="row">
-                            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8
-                            col-md-offset-2 col-lg-offset-2">
+                            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
 								<h2>{issue.title}</h2>
                                 <p className="meta">
                                     Dicatat oleh {issue.author} | {issue.createdAt}
@@ -197,15 +196,16 @@ export class IssueDetail extends Component {
 
                             </div>
                         </div>
+                        <div className="row">
+                            <ReactDisqusThread
+                                shortname="pantaukorupsi"
+                                identifier={"issue-" + issue.id}
+                                title={issue.title}
+                                url={"http://www.pantaukorupsi.com/issues/" + issue.id}
+                                className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2" />
+                        </div>
                     </div>
                 </div>
-                <ReactDisqusThread
-                    shortname="pantaukorupsi"
-                    identifier="something"
-                    title="Example Thread"
-                    url="http://www.example.com/example-thread"
-                    category_id="4236300"
-                    onNewComment={this.handleNewComment}/>
             </section>
         );
     }
