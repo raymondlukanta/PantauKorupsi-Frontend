@@ -14,7 +14,7 @@ export class OrganizationRow extends Component {
 
         return (
             <tr>
-                <td><Link to={`organizations/${organization.id}`}>{organization.name}</Link></td>
+                <td><Link to={`/organizations/${organization.id}`}>{organization.name}</Link></td>
                 <td>{organization.description}</td>
             </tr>
         );
