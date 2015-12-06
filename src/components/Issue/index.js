@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 /* component styles */
 import styles from './styles';
@@ -12,18 +13,13 @@ export class Issue extends Component {
         const { issue } = this.props;
 
         return (
-            <div className={`${styles}`}>
-                <label>
-                    <h2>{`${issue.title}`}</h2>
-                    <p className="meta">
-                        Dicatat oleh {`${issue.author}`} | {`${issue.createdAt}`}
-                    </p>
-                    <br/>
-                    <p>{`${issue.description}`}</p>
-                    <br/>
-                    <p><b>Kerugian Negara: </b>{`${issue.financialCost}`}</p>
-                </label>
-            </div>
-            );
+            <tr className={styles}>
+                <td className="col-md-2 occuredAt">{issue.startedAt}</td>
+                <td className="col-md-10">
+                    <h5><Link to={`issues/${issue.id}`}>{issue.title}</Link></h5>
+                    <p>{issue.description}</p>
+                </td>
+            </tr>
+        );
     }
 }

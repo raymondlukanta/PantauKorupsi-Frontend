@@ -15,7 +15,7 @@ export class Organization extends Component {
         return (
             <div className={styles}>
                 <div className="organization-row">
-                    <h5>{organization.name}</h5>
+                    <h5><Link to={`organizations/${organization.id}`}>{organization.name}</Link></h5>
                     <p>{organization.description}</p>
                 </div>
             </div>

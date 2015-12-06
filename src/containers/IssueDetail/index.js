@@ -90,7 +90,14 @@ export class IssueDetail extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8
                             col-md-offset-2 col-lg-offset-2">
-                                <Issue {...this.props} issue={issue}/>
+                                <h2>{issue.title}</h2>
+                                <p className="meta">
+                                    Dicatat oleh {issue.author} | {issue.createdAt}
+                                </p>
+                                <br/>
+                                <p>{issue.description}</p>
+                                <br/>
+                                <p><b>Kerugian Negara: </b>{issue.financialCost}</p>
                             </div>
                         </div>
                         <div className="row issue-detail-tab">

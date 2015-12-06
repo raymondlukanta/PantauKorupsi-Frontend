@@ -45,8 +45,8 @@ export class Header extends Component {
                 <Link to="/actors" activeClassName="active">
                   Tersangka
                 </Link>
-                <Link to="/list" activeClassName="active">
-                  Organisasi
+                <Link to="/organizations" activeClassName="active">
+                  Institusi
                 </Link>
               </nav>
             </div>
