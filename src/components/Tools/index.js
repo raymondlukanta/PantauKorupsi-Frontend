@@ -18,7 +18,7 @@ export class Tools extends Component {
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                             <h2>
-                                Telusuri Berbagai Sudut dari Setiap Kasus Korupsi
+                                Pantau Berbagai Sudut dari Setiap Kasus Korupsi
                             </h2>
                         </div>
                     </div>
