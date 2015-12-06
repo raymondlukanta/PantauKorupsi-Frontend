@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
+import { Link } from 'react-router';
 
 /* components */
 import { IssueTable } from 'components/IssueTable';
@@ -112,7 +113,7 @@ export class IssuesPage extends Component {
                                 </div>
 
                             </div>
-                            <button className="btn btn-primary add-issue-button" type="submit">+ Tambah Kasus</button>
+                            <Link to="/issues/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Kasus</Link>
                         </div>
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
