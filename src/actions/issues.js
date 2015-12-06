@@ -7,29 +7,20 @@ export const IssuesActionTypes = keyMirror({
     UPDATE_ISSUE_LIST_REQUEST: null, UPDATE_ISSUE_LIST_SUCCESS: null, UPDATE_ISSUE_LIST_FAILURE: null,
   })
 
-// Fetches a user.
-// Relies on the custom API middleware defined in ../middleware/api.js.
-function fetchReadIssue(userName) {
-  //TODO
+function fetchReadIssue(issueId) {
   return {
     [CALL_API]: {
-      types: [ IssuesActionTypes.USER_REQUEST, IssuesActionTypes.USER_SUCCESS, IssuesActionTypes.USER_FAILURE ],
-      endpoint: `users/1`,
+      types: [ IssuesActionTypes.READ_ISSUE_REQUEST, IssuesActionTypes.READ_ISSUE_SUCCESS, IssuesActionTypes.READ_ISSUE_FAILURE ],
+      endpoint: 'issues/' + issueId,
       method: 'GET',
       schema: Schemas.ISSUE
     }
   }
 }
 
-export function loadReadIssue(userName, requiredFields = []) {
+export function loadReadIssue(issueId) {
   return (dispatch, getState) => {
-
-    const user = getState().entities.users[userName]
-    if (user && requiredFields.every(key => user.hasOwnProperty(key))) {
-      return null
-    }
-
-    return dispatch(fetchUser(userName))
+    return dispatch(fetchReadIssue(issueId))
   }
 }
 

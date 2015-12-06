@@ -5,7 +5,7 @@ import DocumentMeta from 'react-document-meta';
 import { IssueTable } from 'components/IssueTable';
 
 /*Redux */
-import {loadReadIssueList} from 'actions/issues';
+import { loadReadIssueList } from 'actions/issues';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -50,8 +50,6 @@ export class IssuesPage extends Component {
 
     render() {
         const { issues } = this.props
-        
-        console.log(this.props)
 
         // var issues = [
         //     {   "id": 1,

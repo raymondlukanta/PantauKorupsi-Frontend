@@ -30,7 +30,6 @@ export class IssueTable extends Component {
                 content.push(<IssueRow key={id} issue={items[id]}/>)
             }
         }
-        console.log(content)
 
         return (
             <div className={styles}>
