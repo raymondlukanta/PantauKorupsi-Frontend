@@ -112,7 +112,7 @@ export class ActorDetailPage extends Component {
                                         <table>
                                             {
                                                 involvements.map((involvement, index) =>
-                                                    <Issue issue={involvement.issue}/>
+                                                    <Issue issue={involvement.issue} involvement={involvement}/>
                                                 )
                                             }
                                         </table>
