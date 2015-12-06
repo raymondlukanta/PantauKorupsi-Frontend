@@ -26,6 +26,10 @@ export class IssueTable extends Component {
         return (
             <div className={styles}>
                 <table className="table table-striped">
+                    <col width="40%" />
+                    <col width="25%" />
+                    <col width="25%" />
+                    <col width="10%" />
                     <tr>
                         <th>Nama Kasus</th>
                         <th>Kerugian Negara</th>

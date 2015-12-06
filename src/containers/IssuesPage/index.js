@@ -67,9 +67,16 @@ export class IssuesPage extends Component {
                 <div className="page-container">
                     <div className="container">
                         <div className="row">
-                            
+                            <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+                                <div className="page-header">
+                                    <h2>Kasus</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                                 <IssueTable {...this.props} items={issues}/>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>

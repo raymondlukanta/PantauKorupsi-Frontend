@@ -13,10 +13,10 @@ export class IssueRow extends Component {
         const { issue } = this.props;
 
         return (
-            <tr className={`${styles}`}>
+            <tr className={styles}>
                 <td><Link to={`issues/${issue.id}`}>{issue.title}</Link></td>
-                <td>{issue.financialCost}</td>
-                <td>{issue.startedAt}</td>
+                <td className="finCostColumn">{issue.financialCost}</td>
+                <td className="startedAtColumn">{issue.startedAt}</td>
                 <td>{issue.status}</td>
             </tr>
             );
