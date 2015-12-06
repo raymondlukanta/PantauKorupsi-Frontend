@@ -86,6 +86,7 @@
     "normalizr": "^1.0.0",
     "qs": "^5.2.0",
     "react": "^0.14.2",
+    "react-datepicker": "^0.15.2",
     "react-disqus-thread": "0.3.1",
     "react-paginate": "^0.4.3",
     "react-paginate-component": "0.0.3",
