@@ -1,0 +1,27 @@
+:local(.styles) {
+  position: relative;
+  padding-bottom: 0;
+  padding-left: 30px;
+  margin: 0;
+
+  .tool {
+    padding-top: 60px;
+    h4 {
+    	padding: 0 20px;
+    }
+
+    ul li {
+      font-size: 18px;
+      list-style-type: circle;
+      line-height: 32px;
+    }
+  }
+
+  .image {
+    img {
+      width: 500px;
+      padding-top: 20px;
+    }
+    text-align: right;
+  }
+}
