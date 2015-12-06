@@ -49,13 +49,18 @@
   padding-bottom: 40px;
 }
 
-.actor-large-thumb {
-  text-align: center;
+.actor-large-thumb-container {
   vertical-align: top;
-  padding-top:10px;
+  padding-top: 10px;
+  text-align: center;
 }
-.actor-large-thumb img {
+.actor-large-thumb {
   width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      border-radius: 50px;
 }
 
 .filter {

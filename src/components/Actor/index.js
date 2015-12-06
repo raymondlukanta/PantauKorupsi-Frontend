@@ -20,8 +20,8 @@ export class Actor extends Component {
 
         return (
             <tr className={styles}>
-                <td className="col-md-2 occuredAt actor-thumbnail">
-                    <img src={actor.imageUrl} className="img-circle" />
+                <td className="col-md-2 actor-thumbnail-container">
+                    <div style={{backgroundImage: 'url(' + actor.imageUrl + ')'}} className="actor-thumbnail" />
                 </td>
                 <td className="col-md-10">
                     <h5><Link to={"/actors/" + actor.id}>{actor.name}</Link> {badge}</h5> 
