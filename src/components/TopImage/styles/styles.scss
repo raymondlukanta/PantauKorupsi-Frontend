@@ -3,10 +3,15 @@
 :local(.styles) {
   position: relative;
 
-  background: url(../files/nyc.jpg);
+  background: url(../files/headline-bg.jpg);
   background-size: 100% auto;
 
   height: 500px;
+
+  .headline-wrapper {
+    background-color: rgba(0,0,0,.1);
+    height: 500px;
+  }
 
   @media (min-width: 768px) and (max-width: 992px) {
     height: 340px;
