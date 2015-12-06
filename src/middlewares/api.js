@@ -60,10 +60,15 @@ const authenticationSchema = new Schema('authentication')
 // Schemas for Github API responses.
 export const Schemas = {
   USER: userSchema,
+  USER_ARRAY: arrayOf(userSchema),
   ACTOR: actorSchema,
+  ACTOR_ARRAY: arrayOf(actorSchema),
   FEED: feedSchema,
+  FEED_ARRAY: arrayOf(feedSchema),
   ISSUE: issueSchema,
+  ISSUE_ARRAY: arrayOf(issueSchema),
   ORGANIZATION: organizationSchema,
+  ORGANIZATION_ARRAY: arrayOf(organizationSchema)
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.
@@ -127,7 +132,8 @@ function generateOptions(method, body, contentType) {
     var options = {
       headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "Accept": "application/json; charset=UTF-8"
+        "Accept": "application/json; charset=UTF-8",
+        "Authorization": "Bearer " + localStorage.getItem("myCat") 
       }
     };
  

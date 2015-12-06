@@ -6,7 +6,7 @@ import styles from './styles';
 
 export class IssueTable extends Component {
     static propTypes = {
-        items: React.PropTypes.array,
+        items: React.PropTypes.object,
         delItem: React.PropTypes.func,
     }
 
@@ -22,7 +22,14 @@ export class IssueTable extends Component {
 
     render() {
         const { items } = this.props;
-
+        var content;
+        if (items == undefined || items.length < 1) {
+            content = <tr><td colSpan={4}>Array is empty</td></tr>
+        } else {
+            content = Object.keys(items).map((id) =>
+                            <IssueRow key={id} issue={items[id]}/>
+                        )
+        }
         return (
             <div className={styles}>
                 <table className="table table-striped">
@@ -30,18 +37,19 @@ export class IssueTable extends Component {
                     <col width="25%" />
                     <col width="25%" />
                     <col width="10%" />
-                    <tr>
-                        <th>Nama Kasus</th>
-                        <th>Kerugian Negara</th>
-                        <th>Tanggal Mulai</th>
-                        <th>Status</th>
-                    </tr>
-                    {!items.length && <span>Array is empty</span>}
-                    {
-                        items.map((item, index) =>
-                            <IssueRow issue={item}/>
-                        )
-                    }
+					<thead>
+                        <tr>
+                            <th>Nama Kasus</th>
+                            <th>Kerugian Negara</th>
+                            <th>Tanggal Mulai</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        { content }
+                    </tbody>
+                    
                 </table>
             </div>
             );
