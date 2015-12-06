@@ -53,11 +53,11 @@ const organizationSchema = new Schema('organizations', {
   idAttribute: 'id'
 })
 
-issueSchema.define({
-  actors: arrayOf(actorSchema),
-  feeds: arrayOf(feedSchema),
-  organizations: arrayOf(organizationSchema)
-});
+// issueSchema.define({
+//   actors: arrayOf(actorSchema),
+//   feeds: arrayOf(feedSchema),
+//   organizations: arrayOf(organizationSchema)
+// });
 
 
 const authenticationSchema = new Schema('authentication')
