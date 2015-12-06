@@ -43,7 +43,7 @@ export class Header extends Component {
                   Kasus
                 </Link>
                 <Link to="/actors" activeClassName="active">
-                  Tersangka
+                  Tokoh
                 </Link>
                 <Link to="/organizations" activeClassName="active">
                   Institusi

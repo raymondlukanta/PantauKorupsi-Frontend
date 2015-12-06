@@ -84,6 +84,8 @@ export class IssueDetail extends Component {
             )
         }
 
+        var involvements = issue.involvements;
+
         var actors = [
             {   "name": "Widjanarko Puspoyo, MA",
                 "description": "Kepala BULOG periode 2001 s/d 2003 / Direktur Utama Perum BULOG, periode 2003 s/d 2007",
@@ -172,10 +174,10 @@ export class IssueDetail extends Component {
                                     </div>
                                     <div id="issue-actors" className="tab-pane fade">
                                         <table>
-                                            {!actors.length && <span>Tidak tersedia</span>}
+                                            {!involvements.length && <span>Tidak tersedia</span>}
                                             {
-                                                actors.map((actor, index) =>
-                                                    <Actor actor={actor}/>
+                                                involvements.map((involvement, index) =>
+                                                    <Actor actor={involvement.actor}/>
                                                 )
                                             }
                                         </table>
