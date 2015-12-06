@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
+import moment from 'moment';
+import DatePicker from 'react-datepicker';
 import { Link } from 'react-router';
+
+import 'style!css!react-datepicker/dist/react-datepicker.css'
 
 const metaData = {
     title: 'Redux Easy Boilerplate',
@@ -15,13 +19,28 @@ const metaData = {
 };
 
 export class IssueFormPage extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            startDate: moment()
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(date) {
+        this.setState({
+            startDate: date
+        })
+    }
+
     render() {
         return (
             <section>
                 <DocumentMeta {...metaData} />
                 <div className="page-container">
                     <div className="container">
-                        <div className="row header">
+                        <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                                 <div className="page-header">
                                     <h2>Kasus Baru</h2>
@@ -41,9 +60,17 @@ export class IssueFormPage extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label for="issueStartDate">Tanggal Kejadian</label>
-                                        <input type="datetime" className="form-control" id="issueStartDate" placeholder="Tanggal Kejadian" />
+                                        <DatePicker
+                                            selected={this.state.startDate}
+                                            onChange={this.handleChange}
+                                            dateFormat="YYYY/MM/DD"
+                                            placeholderText='Tanggal Kejadian' />
                                     </div>
-                                    <button type="submit" className="btn btn-default">Submit</button>
+                                    <div className="form-group">
+                                        <label for="issueURL">Tautan</label>
+                                        <input type="text" className="form-control" id="issueURL" placeholder="http://example.com" />
+                                    </div>
+                                    <button type="submit" className="btn btn-primary">Simpan</button>
                                 </form>
                             </div>
                         </div>
