@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import DocumentMeta from 'react-document-meta';
+import ReactDisqusThread from 'react-disqus-thread';
 
 /* components */
 import { Issue } from 'components/Issue';
@@ -81,8 +82,6 @@ export class OrganizationDetailPage extends Component {
             issues
         } = organization
 
-        console.log(organization)
-
         if (issues === undefined) { issues = [] }
 
         return (
@@ -117,6 +116,14 @@ export class OrganizationDetailPage extends Component {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className="row">
+                            <ReactDisqusThread
+                                shortname="pantaukorupsi"
+                                identifier={"organization-" + organization.id}
+                                title={organization.name}
+                                url={"http://www.pantaukorupsi.com/organizations/" + organization.id}
+                                className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 disqus-box" />
                         </div>
                     </div>
                 </div>

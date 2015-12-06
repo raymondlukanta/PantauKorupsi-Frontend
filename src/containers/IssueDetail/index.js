@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import DocumentMeta from 'react-document-meta';
+import ReactDisqusThread from 'react-disqus-thread';
 
 /* components */
 import { Issue } from 'components/Issue';
@@ -8,7 +9,6 @@ import { Feed } from 'components/Feed';
 import { Actor } from 'components/Actor';
 import { LoadingPage } from '../LoadingPage';
 import { Organization } from 'components/Organization';
-import ReactDisqusThread from 'react-disqus-thread';
 
 /*Redux */
 import { loadReadIssue } from 'actions/issues';
