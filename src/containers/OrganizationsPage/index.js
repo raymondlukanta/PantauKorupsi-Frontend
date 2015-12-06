@@ -91,8 +91,10 @@ export class OrganizationsPage extends Component {
                                 <p>Institusi yang terlibat kasus korupsi, baik yang terkait secara langsung maupun tidak langsung.</p>
                             </div>
                         </div>
-                        <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
-                            <Link to="/organizations/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Institusi</Link>
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+                                <Link to="/organizations/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Institusi</Link>
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
