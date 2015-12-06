@@ -6,7 +6,7 @@ import styles from './styles';
 
 export class OrganizationTable extends Component {
     static propTypes = {
-        items: React.PropTypes.array,
+        items: React.PropTypes.object,
         delItem: React.PropTypes.func,
     }
 
@@ -22,22 +22,32 @@ export class OrganizationTable extends Component {
 
     render() {
         const { items } = this.props;
+        var content
+        if (items == undefined || items.length < 1) {
+            content = (<tr><td colSpan={4}>Array is empty</td></tr>)
+        } else {
+            content = Object.keys(items).map((id) =>
+                        <OrganizationRow key={id} organization={items[id]}/>
+                    )
+        }
 
         return (
             <div className={styles}>
                 <table className="table table-striped">
-                    <col width="40%" />
-                    <col width="60%" />
-                    <tr>
-                        <th>Nama Organisasi</th>
-                        <th>Deskripsi</th>
-                    </tr>
-                    {!items.length && <span>Array is empty</span>}
-                    {
-                        items.map((item, index) =>
-                            <OrganizationRow organization={item}/>
-                        )
-                    }
+                    <colgroup>
+                        <col width="40%" />
+                        <col width="60%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Nama Organisasi</th>
+                            <th>Deskripsi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {content}
+                    </tbody>
                 </table>
             </div>
             );

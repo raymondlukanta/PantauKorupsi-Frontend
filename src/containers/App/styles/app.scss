@@ -48,3 +48,73 @@
 .header {
   padding-bottom: 40px;
 }
+
+.actor-large-thumb {
+  text-align: center;
+  vertical-align: top;
+  padding-top:10px;
+}
+.actor-large-thumb img {
+  width: 100px;
+}
+
+.filter {
+  padding-left: 0;
+  padding-bottom: 20px;
+  display: inline-flex;
+}
+.filter .status {
+  padding-right: 10px;
+  top: 10;
+}
+.filter .dropdown {
+  margin-top: 3px;
+}
+.filter .add-issue-button {
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,1);
+    right: 0;
+}
+#login-dp .help-block a{
+    font-size:12px;
+    color:#337ab7;
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,1);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .bottom a{
+    color: #337ab7;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.dropdown-menu {
+  left:30%;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
