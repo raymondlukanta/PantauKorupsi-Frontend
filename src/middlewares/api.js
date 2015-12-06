@@ -141,7 +141,7 @@ function generateOptions(method, body, contentType) {
       headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
         "Accept": "application/json; charset=UTF-8",
-        "Authorization": "Bearer " + localStorage.getItem("myCat") 
+        "Authorization": "Bearer " + localStorage.getItem("authToken_pantau_korupsi") 
       }
     };
  

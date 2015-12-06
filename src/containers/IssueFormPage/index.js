@@ -6,6 +6,12 @@ import { Link } from 'react-router';
 
 import 'style!css!react-datepicker/dist/react-datepicker.css'
 
+/* redux */
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { reduxForm } from 'redux-form';
+import { loadCreateIssue } from 'actions/issues';
+
 const metaData = {
     title: 'Redux Easy Boilerplate',
     description: 'Start you project easy and fast with modern tools',
@@ -18,6 +24,10 @@ const metaData = {
     },
 };
 
+@connect(
+  state => state.form,
+  dispatch => bindActionCreators({ loadCreateIssue }, dispatch)
+)
 export class IssueFormPage extends Component {
 
     constructor() {
@@ -26,6 +36,7 @@ export class IssueFormPage extends Component {
             startDate: moment()
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(date) {
@@ -34,7 +45,17 @@ export class IssueFormPage extends Component {
         })
     }
 
+    handleClick(event) {
+        this.props.loadCreateIssue(this.props.values)
+        // console.log(this.props.values)
+        event.preventDefault();
+    }
+
     render() {
+        const {
+          fields: {title, description, started_at, procurement_url},
+        } = this.props;
+
         return (
             <section>
                 <DocumentMeta {...metaData} />
@@ -49,14 +70,14 @@ export class IssueFormPage extends Component {
                         </div>
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
-                                <form>
+                                <form onSubmit={this.handleClick}>
                                     <div className="form-group">
                                         <label for="issueTitle">Judul Kasus</label>
-                                        <input type="text" className="form-control" id="issueTitle" placeholder="Judul Kasus" />
+                                        <input type="text" className="form-control" id="issueTitle" placeholder="Judul Kasus" {...title}/>
                                     </div>
                                     <div className="form-group">
                                         <label for="issueDescription">Deskripsi Kasus</label>
-                                        <textarea className="form-control" rows="5"></textarea>
+                                        <textarea className="form-control" rows="5" {...description}></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label for="issueStartDate">Tanggal Kejadian</label>
@@ -64,13 +85,13 @@ export class IssueFormPage extends Component {
                                             selected={this.state.startDate}
                                             onChange={this.handleChange}
                                             dateFormat="YYYY/MM/DD"
-                                            placeholderText='Tanggal Kejadian' />
+                                            placeholderText='Tanggal Kejadian' {...started_at}/>
                                     </div>
                                     <div className="form-group">
                                         <label for="issueURL">Tautan</label>
-                                        <input type="text" className="form-control" id="issueURL" placeholder="http://example.com" />
+                                        <input type="text" className="form-control" id="issueURL" placeholder="http://example.com" {...procurement_url}/>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Simpan</button>
+                                    <button className="btn btn-primary" onClick={this.handleClick}>Simpan</button>
                                 </form>
                             </div>
                         </div>
@@ -80,3 +101,9 @@ export class IssueFormPage extends Component {
         );
     }
 }
+
+IssueFormPage = reduxForm({
+  form: 'issue',
+  fields: ['title', 'description', 'started_at', 'procurement_url'],
+  destroyOnUnmount: false,
+})(IssueFormPage);

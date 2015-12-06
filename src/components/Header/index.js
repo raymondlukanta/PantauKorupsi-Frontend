@@ -11,14 +11,11 @@ export class Header extends Component {
     constructor(props) {
         super(props);
         this.hideHeader = this.hideHeader.bind(this);
-        this.onClick = this.onClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    onClick(event) {
-        if (this.props.fields.email.value) {
-            console.log(this.props.values)
-            this.props.doLogin(this.props.values)
-        }
+    handleClick(event) {
+        this.props.doLogin(this.props.values)
         event.preventDefault();
     }
 
@@ -37,8 +34,9 @@ export class Header extends Component {
 
     render() {
         const {
-          fields: {email, password},
+          fields: {email, password}
         } = this.props;
+
 
         return (
             <header className={`${styles}`} ref="header">
@@ -63,7 +61,7 @@ export class Header extends Component {
                                 <li>
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <form className="form" onSubmit={this.onClick} acceptCharset="UTF-8" id="login-nav">
+                                            <form className="form" onSubmit={this.handleClick} acceptCharset="UTF-8" id="login-nav">
                                                 <div className="form-group">
                                                      <label className="sr-only" for="exampleInputEmail2">Email address</label>
                                                      <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Email address" required {...email} />
@@ -74,7 +72,7 @@ export class Header extends Component {
                                                      <div className="help-block text-right"><a href="">Forget the password ?</a></div>
                                                 </div>
                                                 <div className="form-group">
-                                                     <button className="btn btn-primary btn-block" onClick={this.onClick}>Sign in</button>
+                                                     <button className="btn btn-primary btn-block" onClick={this.handleClick}>Sign in</button>
                                                 </div>
                                                 <div className="checkbox">
                                                      <label>
@@ -98,8 +96,7 @@ export class Header extends Component {
 }
 
 Header = reduxForm({
-  form: 'mama',
+  form: 'login',
   fields: ['email', 'password'],
   destroyOnUnmount: false,
 })(Header);
-export default Header;

@@ -6,6 +6,7 @@ export const IssuesActionTypes = keyMirror({
     READ_ISSUE_REQUEST: null, READ_ISSUE_SUCCESS: null, READ_ISSUE_FAILURE: null, 
     READ_ISSUE_LIST_REQUEST: null, READ_ISSUE_LIST_SUCCESS: null, READ_ISSUE_LIST_FAILURE: null,
     UPDATE_ISSUE_LIST_REQUEST: null, UPDATE_ISSUE_LIST_SUCCESS: null, UPDATE_ISSUE_LIST_FAILURE: null,
+    CREATE_ISSUE_REQUEST: null, CREATE_ISSUE_SUCCESS: null, CREATE_ISSUE_FAILURE: null, 
   })
 
 function fetchReadIssue(issueId) {
@@ -59,5 +60,31 @@ function fetchUpdateIssue(issueId) {
 export function loadUpdateIssueList( requiredFields = []) {
   return (dispatch, getState) => {
     return dispatch(fetchUpdateIssue())
+  }
+}
+
+function fetchCreateIssue(body) {
+  return {
+    [CALL_API]: {
+      types: [  IssuesActionTypes.CREATE_ISSUE_REQUEST, IssuesActionTypes.CREATE_ISSUE_SUCCESS, IssuesActionTypes.CREATE_ISSUE_FAILURE ],
+      endpoint: 'issues',
+      method: 'POST',
+      body: body,
+      schema: Schemas.ISSUE
+    }
+  }
+}
+
+export function loadCreateIssue(body) {
+  return (dispatch, getState) => {
+    if (body.status_id === undefined) {
+      body.status_id = 1;
+    }
+    if (body.financial_cost === undefined) {
+      body.financial_cost = 0;
+    }
+    body.started_at = "2015/12/07"
+    
+    return dispatch(fetchCreateIssue(body))
   }
 }

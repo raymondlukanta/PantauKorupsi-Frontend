@@ -19,8 +19,6 @@ function fetchLogin(body) {
 
 export function doLogin(body) {
   return (dispatch, getState) => {
-    console.log("dddd")
-    console.log(body)
     return dispatch(fetchLogin(body))
   }
 }
