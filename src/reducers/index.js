@@ -4,6 +4,7 @@ import merge from 'lodash/object/merge'
 import {reducer as formReducer} from 'redux-form';
 import { ApiActionTypes } from '../actions/api'
 import { UserActionTypes } from '../actions/users'
+import { IssuesActionTypes } from '../actions/issues'
 import { items } from './items';
 
 // Updates an entity cache in response to any action with response.entities.
@@ -13,16 +14,19 @@ function entities(state = { authentication:{}, users: {}, repos: {} }, action) {
 	if (action.response && action.response.entities) {
 		switch (action.type) {
 	    case UserActionTypes.USER_SUCCESS:
+		    localStorage.setItem('myCat', 'Tom');
 			  return merge({}, state, action.response.entities)
 	    	break;
 	  	case UserActionTypes.DELETE_USER_SUCCESS:
-
+				localStorage.removeItem("myCat")
 		  	return {
 		  		...state,
 		      users: [],
 		      
 		    };
-
+	    	break;
+	    default:
+			  return merge({}, state, action.response.entities)
 	    	break;
 	  }
 	}
