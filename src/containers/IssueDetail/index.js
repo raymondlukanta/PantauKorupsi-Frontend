@@ -85,7 +85,8 @@ export class IssueDetail extends Component {
             involvements,
             feeds,
             organizations,
-            procurement_url
+            procurement_url,
+            verifier
         } = issue;
 
         if (involvements === undefined) { involvements = [] }
@@ -95,6 +96,9 @@ export class IssueDetail extends Component {
         var url = []
         if (procurement_url !== undefined) { url = (<p><b>Tautan: </b><a href={procurement_url} target="_blank">{procurement_url}</a></p>) }
 
+        var unverified
+        if (verifier === undefined) { unverified = (<span> (<span className="text-danger">Belum Terverifikasi</span>)</span>) }
+
         return (
             <section className={styles}>
                 <DocumentMeta {...metaData} />
@@ -102,7 +106,7 @@ export class IssueDetail extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
-								<h2>{issue.title}</h2>
+								<h2>{issue.title}<br />{unverified}</h2>
                                 <p className="meta">
                                     Dicatat oleh {issue.user.name} | {issue.createdAt}
                                 </p>
@@ -180,6 +184,8 @@ export class IssueDetail extends Component {
     }
 
     _renderStatus(status) {
+        if (status === undefined) return;
+
         var className;
         if (status.id >= 5) {
             className = "text-success";
