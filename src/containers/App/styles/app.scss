@@ -58,6 +58,24 @@
   width: 100px;
 }
 
+.filter {
+  padding-left: 0;
+  padding-bottom: 20px;
+  display: inline-flex;
+}
+.filter .status {
+  padding-right: 10px;
+  top: 10;
+}
+.filter .dropdown {
+  margin-top: 3px;
+}
+.filter .add-issue-button {
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;

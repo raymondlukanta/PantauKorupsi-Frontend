@@ -93,6 +93,27 @@ export class IssuesPage extends Component {
                                 </div>
                             </div>
                         </div>
+                        <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+                            <div className="filter pull-right">
+                                <h5 className="status">Status: </h5>
+                                <div className="dropdown">
+                                    <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Pilih Status
+                                        <span className="caret"></span>
+                                    </button>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Penindakan</a></li>
+                                        <li><a href="#">Penyelidikan</a></li>
+                                        <li><a href="#">Penyidikan</a></li>
+                                        <li><a href="#">Penuntutan</a></li>
+                                        <li><a href="#">Inkracht</a></li>
+                                        <li><a href="#">Eksekusi</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <button className="btn btn-primary add-issue-button" type="submit">+ Tambah Kasus</button>
+                        </div>
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                                 <IssueTable {...this.props} items={issues}/>
