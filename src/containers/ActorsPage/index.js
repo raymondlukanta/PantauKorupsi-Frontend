@@ -59,26 +59,39 @@ export class ActorsPage extends Component {
                 <div className="page-container">
                     <div className="container">
                         <div className="row">
-                            <table>
-                                {!actors.length && <span>Tidak tersedia</span>}
-                                {
-                                    actors.map((actor, index) =>
-                                        <Actor actor={actor}/>
-                                    )
-                                }
-                            </table>
+                            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                                <div className="page-header">
+                                    <h2>Tersangka</h2>
+                                </div>
+                            </div>
                         </div>
-                        <div className="row pull-right pagination-page">
-                            <ReactPaginate previousLabel={"«"}
-                                   nextLabel={"»"}
-                                   breakLabel={<li className="break"><a href="">...</a></li>}
-                                   pageNum={pageNum}
-                                   marginPagesDisplayed={2}
-                                   pageRangeDisplayed={5}
-                                   clickCallback={this._handlePageClick}
-                                   containerClassName={"pagination"}
-                                   subContainerClassName={"pages pagination"}
-                                   activeClassName={"active"} />
+                        <div className="row">
+                            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                                <table>
+                                    {!actors.length && <span>Tidak tersedia</span>}
+                                    {
+                                        actors.map((actor, index) =>
+                                            <Actor actor={actor}/>
+                                        )
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                        <div className="row pagination-page">
+                            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                                <div className="pull-right">
+                                    <ReactPaginate previousLabel={"«"}
+                                       nextLabel={"»"}
+                                       breakLabel={<li className="break"><a href="">...</a></li>}
+                                       pageNum={pageNum}
+                                       marginPagesDisplayed={2}
+                                       pageRangeDisplayed={5}
+                                       clickCallback={this._handlePageClick}
+                                       containerClassName={"pagination"}
+                                       subContainerClassName={"pages pagination"}
+                                       activeClassName={"active"} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
