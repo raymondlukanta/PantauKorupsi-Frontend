@@ -2,9 +2,18 @@
   text-align: center;
   padding: 70px 0 40px;
 
-  margin: 70px 0 30px;
+  margin: 70px 0 0;
 
   border-top: 1px solid #CCC;
+
+  color: #FFFFFF;
+
+  background: rgba(59,89,152,1);
+
+  a {
+  	color: #dfe3ee;
+  	text-decoration: underline;
+  }
 
   iframe {
     margin: 0 20px;
