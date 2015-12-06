@@ -51,11 +51,6 @@ export class IssueDetail extends Component {
     
     constructor(props) {
         super(props)
-        this.handleNewComment = this.handleNewComment.bind(this)
-    }
-
-    handleNewComment(comment) {
-        console.log(comment.text);
     }
 
     componentWillMount() {

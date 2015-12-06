@@ -50,34 +50,8 @@ export class ActorsPage extends Component {
     componentWillMount() {
         loadData(this.props)
     }
-    render() {
-        // var actors = [
-        //     {   "name": "Widjanarko Puspoyo, MA",
-        //         "description": "Kepala BULOG periode 2001 s/d 2003 / Direktur Utama Perum BULOG, periode 2003 s/d 2007",
-        //         "profile_url": ""
-        //     },
-        //     {   "name": "Ir. Jamerdin Purba",
-        //         "description": "Pegawai Negeri Sipil / Kepala Balai Pembibitan Ternak Unggul (BPTU) Babi dan Kerbau Siborongborong (SK Menteri Pertanian tanggal 25 Januari 2005)",
-        //         "profile_url": ""
-        //     },
-        //     {   "name": "Ir. Yulianus Telaumbanua",
-        //         "description": "Pegawai Negeri Sipil/ Ketua Panitia Pelelangan, Pembelian/Pengadaan Ternak Kerbau Lokal pada Balai Pembibitan Ternak Unggul (BPTU) Babi dan Kerbau Siborongborong tahun 2005",
-        //         "profile_url": ""
-        //     },
-        //     {   "name": "Widjanarko Puspoyo, MA",
-        //         "description": "Kepala BULOG periode 2001 s/d 2003 / Direktur Utama Perum BULOG, periode 2003 s/d 2007",
-        //         "profile_url": ""
-        //     },
-        //     {   "name": "Ir. Jamerdin Purba",
-        //         "description": "Pegawai Negeri Sipil / Kepala Balai Pembibitan Ternak Unggul (BPTU) Babi dan Kerbau Siborongborong (SK Menteri Pertanian tanggal 25 Januari 2005)",
-        //         "profile_url": ""
-        //     },
-        //     {   "name": "Ir. Yulianus Telaumbanua",
-        //         "description": "Pegawai Negeri Sipil/ Ketua Panitia Pelelangan, Pembelian/Pengadaan Ternak Kerbau Lokal pada Balai Pembibitan Ternak Unggul (BPTU) Babi dan Kerbau Siborongborong tahun 2005",
-        //         "profile_url": ""
-        //     }
-        // ]
-        
+
+    render() {        
         const { actors } = this.props
 
         var pageNum = 5;
@@ -86,9 +60,9 @@ export class ActorsPage extends Component {
         if (actors == undefined || actors.length < 1) {
             content = <tr><td colSpan={2}>Tidak tersedia</td></tr>
         } else {
-            content = Object.keys(actors)
-                        .map((id) => <Actor key={id} actor={actors[id]}/>)
+            content = Object.keys(actors).map((id) => <Actor key={id} actor={actors[id]}/>)
         }
+        
         return (
             <section>
                 <DocumentMeta {...metaData} />
@@ -97,7 +71,7 @@ export class ActorsPage extends Component {
 						<div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                                 <div className="page-header">
-                                    <h2>Tersangka</h2>
+                                    <h2>Tokoh</h2>
                                 </div>
                             </div>
                         </div>

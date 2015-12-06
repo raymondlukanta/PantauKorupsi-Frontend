@@ -20,13 +20,7 @@ function fetchReadActor(actorId) {
 
 export function loadReadActor(actorId, requiredFields = []) {
   return (dispatch, getState) => {
-
-    const actor = getState().entities.actors[actorId]
-    if (actor && requiredFields.every(key => actor.hasOwnProperty(key))) {
-      return null
-    }
-
-    return dispatch(fetchReadActor(userName))
+    return dispatch(fetchReadActor(actorId))
   }
 }
 
