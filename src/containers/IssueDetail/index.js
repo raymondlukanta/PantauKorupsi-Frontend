@@ -133,6 +133,9 @@ export class IssueDetail extends Component {
                                                 )
                                             }
                                         </table>
+                                        <div className="add-new-button">
+                                            <Link to="/feeds/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Berita</Link>
+                                        </div>
                                     </div>
                                     <div id="issue-actors" className="tab-pane fade">
                                         <table>
@@ -143,6 +146,9 @@ export class IssueDetail extends Component {
                                                 )
                                             }
                                         </table>
+                                        <div className="add-new-button">
+                                            <Link to="/actors/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Pihak Terkait</Link>
+                                        </div>
                                     </div>
                                     <div id="issue-organizations" className="tab-pane fade">
                                         { !organizations && !organizations.length && <span>Tidak tersedia</span>}
@@ -151,6 +157,9 @@ export class IssueDetail extends Component {
                                                 <Organization organization={organization}/>
                                             )
                                         }
+                                        <div className="add-new-button">
+                                            <Link to="/organizations/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Institusi Terkait</Link>
+                                        </div>
                                     </div>
                                 </div>
 

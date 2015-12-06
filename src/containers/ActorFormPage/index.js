@@ -18,7 +18,7 @@ const metaData = {
     },
 };
 
-export class IssueFormPage extends Component {
+export class ActorFormPage extends Component {
 
     constructor() {
         super();
@@ -43,7 +43,7 @@ export class IssueFormPage extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                                 <div className="page-header">
-                                    <h2>Kasus Baru</h2>
+                                    <h2>Tokoh Baru</h2>
                                 </div>
                             </div>
                         </div>
@@ -51,24 +51,20 @@ export class IssueFormPage extends Component {
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                                 <form>
                                     <div className="form-group">
-                                        <label for="issueTitle">Judul Kasus</label>
-                                        <input type="text" className="form-control" id="issueTitle" placeholder="Judul Kasus" />
+                                        <label for="actorName">Nama Tokoh</label>
+                                        <input type="text" className="form-control" id="actorName" placeholder="Nama" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="issueDescription">Deskripsi Kasus</label>
+                                        <label for="actorDescription">Tentang Tokoh</label>
                                         <textarea className="form-control" rows="5"></textarea>
                                     </div>
                                     <div className="form-group">
-                                        <label for="issueStartDate">Tanggal Kejadian</label>
-                                        <DatePicker
-                                            selected={this.state.startDate}
-                                            onChange={this.handleChange}
-                                            dateFormat="YYYY/MM/DD"
-                                            placeholderText='Tanggal Kejadian' />
+                                        <label for="actorImageURL">Foto Tokoh</label>
+                                        <input type="file" id="actorImageURL" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="issueURL">Tautan</label>
-                                        <input type="text" className="form-control" id="issueURL" placeholder="http://example.com" />
+                                        <label for="actorURL">Tautan Tentang Tokoh</label>
+                                        <input type="text" className="form-control" id="actorURL" placeholder="http://example.com" />
                                     </div>
                                     <button type="submit" className="btn btn-primary">Simpan</button>
                                 </form>

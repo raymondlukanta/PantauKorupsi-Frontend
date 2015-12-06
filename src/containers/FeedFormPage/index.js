@@ -18,7 +18,7 @@ const metaData = {
     },
 };
 
-export class IssueFormPage extends Component {
+export class FeedFormPage extends Component {
 
     constructor() {
         super();
@@ -43,7 +43,7 @@ export class IssueFormPage extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                                 <div className="page-header">
-                                    <h2>Kasus Baru</h2>
+                                    <h2>Berita Baru</h2>
                                 </div>
                             </div>
                         </div>
@@ -51,15 +51,15 @@ export class IssueFormPage extends Component {
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                                 <form>
                                     <div className="form-group">
-                                        <label for="issueTitle">Judul Kasus</label>
-                                        <input type="text" className="form-control" id="issueTitle" placeholder="Judul Kasus" />
+                                        <label for="feedTitle">Judul Berita</label>
+                                        <input type="text" className="form-control" id="feedTitle" placeholder="Judul Berita" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="issueDescription">Deskripsi Kasus</label>
+                                        <label for="feedSummary">Rangkuman Berita</label>
                                         <textarea className="form-control" rows="5"></textarea>
                                     </div>
                                     <div className="form-group">
-                                        <label for="issueStartDate">Tanggal Kejadian</label>
+                                        <label for="feedOccuredAt">Tanggal Kejadian</label>
                                         <DatePicker
                                             selected={this.state.startDate}
                                             onChange={this.handleChange}
@@ -67,8 +67,8 @@ export class IssueFormPage extends Component {
                                             placeholderText='Tanggal Kejadian' />
                                     </div>
                                     <div className="form-group">
-                                        <label for="issueURL">Tautan</label>
-                                        <input type="text" className="form-control" id="issueURL" placeholder="http://example.com" />
+                                        <label for="feedURL">Tautan Berita</label>
+                                        <input type="text" className="form-control" id="feedURL" placeholder="http://example.com" />
                                     </div>
                                     <button type="submit" className="btn btn-primary">Simpan</button>
                                 </form>
