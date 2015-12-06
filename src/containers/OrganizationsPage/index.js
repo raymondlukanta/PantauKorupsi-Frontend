@@ -5,6 +5,11 @@ import ReactPaginate from 'react-paginate';
 /* components */
 import { OrganizationTable } from 'components/OrganizationTable';
 
+/*Redux */
+import { loadReadOrganizationList } from 'actions/organizations';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 const metaData = {
     title: 'Redux Easy Boilerplate',
     description: 'Start you project easy and fast with modern tools',
@@ -17,30 +22,58 @@ const metaData = {
     },
 };
 
+function loadData(props) {
+  props.loadReadOrganizationList()
+}
+
+function mapStateToProps(state) {
+  const {
+    entities: { organizations }
+  } = state
+
+  return {
+    organizations: organizations
+  }
+}
+
+@connect(
+    mapStateToProps,
+    dispatch => bindActionCreators({loadReadOrganizationList}, dispatch)
+)
 export class OrganizationsPage extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillMount() {
+        loadData(this.props)
+    }
+
     render() {
-        var organizations = [
-            {   "id": 1,
-                "name": "PT GINA REKSA UTAMA",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                "organization_url": ""
-            },
-            {   "id": 2,
-                "name": "CV. Adi Putra Maros",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                "organization_url": ""
-            },
-            {   "id": 3,
-                "name": "PT. PLN Ranting Selong Cabang Mataram",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                "organization_url": "" 
-            },
-            {   "id": 4,
-                "name": "Yayasan Pembina IKIP Veteran Semarang",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                "organization_url": ""
-            },
-        ]
+        const { organizations } = this.props
+        
+        // var organizations = [
+        //     {   "id": 1,
+        //         "name": "PT GINA REKSA UTAMA",
+        //         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        //         "organization_url": ""
+        //     },
+        //     {   "id": 2,
+        //         "name": "CV. Adi Putra Maros",
+        //         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        //         "organization_url": ""
+        //     },
+        //     {   "id": 3,
+        //         "name": "PT. PLN Ranting Selong Cabang Mataram",
+        //         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        //         "organization_url": "" 
+        //     },
+        //     {   "id": 4,
+        //         "name": "Yayasan Pembina IKIP Veteran Semarang",
+        //         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        //         "organization_url": ""
+        //     },
+        // ]
 
         var pageNum = 5;
 

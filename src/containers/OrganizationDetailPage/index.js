@@ -6,6 +6,11 @@ import DocumentMeta from 'react-document-meta';
 import { Issue } from 'components/Issue';
 import { Actor } from 'components/Actor';
 
+/*Redux */
+import { loadReadOrganization } from 'actions/organizations';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 const metaData = {
     title: 'Redux Easy Boilerplate',
     description: 'Start you project easy and fast with modern tools',
@@ -18,14 +23,58 @@ const metaData = {
     },
 };
 
+function loadData(props, organizationId) {
+    props.loadReadOrganization(organizationId)
+}
+
+function mapStateToProps(state) {
+    const {
+        entities: { organizations }
+    } = state
+
+    return {
+        organizations: organizations
+    }
+}
+
+@connect(
+    mapStateToProps,
+    dispatch => bindActionCreators({loadReadOrganization}, dispatch)
+)
 export class OrganizationDetailPage extends Component {
+    constructor(props) {
+        super(props)
+        // this.handleNewComment = this.handleNewComment.bind(this)
+    }
+
+    // handleNewComment(comment) {
+    //     console.log(comment.text);
+    // }
+
+    componentWillMount() {
+        this.organizationId = this.props.params.id
+        loadData(this.props, this.organizationId)
+    }
+
+    componentDidUpdate (prevProps) {
+        let oldId = prevProps.params.id
+        let newId = this.props.params.id
+        if (newId !== oldId) {
+            this.organizationId = this.props.params.id
+            loadData(this.props, newId)
+        }
+    }
+
     render() {
-        var organization =
-            {   "id": 1,
-                "name": "CV. Adi Putra Maros",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "organization_url": ""
-            }
+        const { organizations } = this.props
+
+        var organization
+        var issues
+        // var actors
+        if (organizations != undefined) {
+            organization = organizations[this.organizationId]
+            issues = organization[""]
+        }
 
         var issues = [
             {   "title": "Setya Novanto Dibidik Sangkaan Korupsi",
@@ -93,22 +142,26 @@ export class OrganizationDetailPage extends Component {
                                 <div className="tab-content">
                                     <div id="organization-issues" className="tab-pane fade in active">
                                         <table>
-                                            {!issues.length && <span>Tidak tersedia</span>}
-                                            {
-                                                issues.map((issue, index) =>
-                                                    <Issue issue={issue}/>
-                                                )
-                                            }
+                                            <tbody>
+                                                {!issues.length && <span>Tidak tersedia</span>}
+                                                {
+                                                    issues.map((issue, index) =>
+                                                        <Issue issue={issue}/>
+                                                    )
+                                                }
+                                            </tbody>
                                         </table>
                                     </div>
                                     <div id="organization-actors" className="tab-pane fade">
                                         <table>
-                                            {!actors.length && <span>Tidak tersedia</span>}
-                                            {
-                                                actors.map((actor, index) =>
-                                                    <Actor actor={actor}/>
-                                                )
-                                            }
+                                            <tbody>
+                                                {!actors.length && <span>Tidak tersedia</span>}
+                                                {
+                                                    actors.map((actor, index) =>
+                                                        <Actor actor={actor}/>
+                                                    )
+                                                }
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
