@@ -81,6 +81,8 @@ export class OrganizationDetailPage extends Component {
             issues
         } = organization
 
+        console.log(organization)
+
         if (issues === undefined) { issues = [] }
 
         return (
