@@ -17,7 +17,7 @@ export class IssueRow extends Component {
                 <td><Link to={`issues/${issue.id}`}>{issue.title}</Link></td>
                 <td>{issue.financialCost}</td>
                 <td>{issue.startedAt}</td>
-                <td>{issue.status}</td>
+                <td>{issue.status.name}</td>
             </tr>
             );
     }

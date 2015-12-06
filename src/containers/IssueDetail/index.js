@@ -7,6 +7,12 @@ import { Issue } from 'components/Issue';
 import { Feed } from 'components/Feed';
 import { Actor } from 'components/Actor';
 import { Organization } from 'components/Organization';
+import ReactDisqusThread from 'react-disqus-thread';
+
+/*Redux */
+import { loadReadIssue } from 'actions/issues';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const metaData = {
     title: 'Redux Easy Boilerplate',
@@ -20,18 +26,67 @@ const metaData = {
     },
 };
 
+function loadData(props, issueId) {
+    props.loadReadIssue(issueId)
+}
+
+function mapStateToProps(state) {
+  const {
+    entities: { issues }
+  } = state
+
+  return {
+    issues: issues
+  }
+}
+
+@connect(
+  mapStateToProps,
+  dispatch => bindActionCreators({loadReadIssue}, dispatch)
+)
 export class IssueDetail extends Component {
+    
+    constructor(props) {
+        super(props)
+        this.handleNewComment = this.handleNewComment.bind(this)
+    }
+
+    handleNewComment(comment) {
+        console.log(comment.text);
+    }
+
+    componentWillMount() {
+        this.issueId = this.props.params.id
+        loadData(this.props, this.issueId)
+    }
+
+    componentDidUpdate (prevProps) {
+        let oldId = prevProps.params.id
+        let newId = this.props.params.id
+        if (newId !== oldId) {
+            this.issueId = this.props.params.id
+            loadData(this.props, newId)
+        }
+    }
+
     render() {
-        var issue = 
-            {   "id": 1,
-                "title": "Setya Novanto Dibidik Sangkaan Korupsi",
-                "description": "Kejaksaan Agung membidik Ketua DPR Setya Novanto dengan sangkaan korupsi. Bidikan itu dilakukan terkait dugaan pencatutan nama Presiden Joko Widodo dan Wakil Presiden Jusuf Kalla",
-                "author": "James Reddy",
-                "financialCost": "IDR50.000.000.000",
-                "createdAt": "4 December 2015",
-                "startedAt": "28 November 2015",
-                "status": "Penyelidikan"
-            }
+        const { issues } = this.props
+
+        var issue
+        if (issues != undefined) {
+            issue = issues[this.issueId]
+        }
+        
+        // var issue = 
+        //     {   "id": 1,
+        //         "title": "Setya Novanto Dibidik Sangkaan Korupsi",
+        //         "description": "Kejaksaan Agung membidik Ketua DPR Setya Novanto dengan sangkaan korupsi. Bidikan itu dilakukan terkait dugaan pencatutan nama Presiden Joko Widodo dan Wakil Presiden Jusuf Kalla",
+        //         "author": "James Reddy",
+        //         "financialCost": "IDR50.000.000.000",
+        //         "createdAt": "4 December 2015",
+        //         "startedAt": "28 November 2015",
+        //         "status": "Penyelidikan"
+        //     }
 
         var actors = [
             {   "name": "Widjanarko Puspoyo, MA",
@@ -82,6 +137,14 @@ export class IssueDetail extends Component {
             }
         ]
 
+        var issueContent;
+
+        if (issue == undefined || issue.length < 1) {
+            issueContent = "Tidak tersedia"
+        } else {
+            issueContent = <Issue {...this.props} issue={issue}/>
+        }
+
         return (
             <section>
                 <DocumentMeta {...metaData} />
@@ -90,7 +153,7 @@ export class IssueDetail extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8
                             col-md-offset-2 col-lg-offset-2">
-                                <Issue {...this.props} issue={issue}/>
+                                { issueContent }
                             </div>
                         </div>
                         <div className="row issue-detail-tab">
@@ -137,6 +200,13 @@ export class IssueDetail extends Component {
                         </div>
                     </div>
                 </div>
+                <ReactDisqusThread
+                    shortname="pantaukorupsi"
+                    identifier="something"
+                    title="Example Thread"
+                    url="http://www.example.com/example-thread"
+                    category_id="4236300"
+                    onNewComment={this.handleNewComment}/>
             </section>
         );
     }

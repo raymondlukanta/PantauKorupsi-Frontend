@@ -8,7 +8,6 @@ const API_ROOT = BaseURL
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, option, schema) {
-  console.log(API_ROOT)
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
   return fetch(fullUrl, option)
@@ -53,6 +52,12 @@ const issueSchema = new Schema('issues', {
 const organizationSchema = new Schema('organizations', {
   idAttribute: 'id'
 })
+
+issueSchema.define({
+  actors: arrayOf(actorSchema),
+  feeds: arrayOf(feedSchema),
+  organizations: arrayOf(organizationSchema)
+});
 
 
 const authenticationSchema = new Schema('authentication')

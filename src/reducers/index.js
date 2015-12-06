@@ -8,7 +8,7 @@ import { IssuesActionTypes } from '../actions/issues'
 import { items } from './items';
 
 // Updates an entity cache in response to any action with response.entities.
-function entities(state = { authentication:{}, users: {}, repos: {} }, action) {
+function entities(state = { authentication:{}}, action) {
 	    	console.log("TYPE:"+action.type)
 	
 	if (action.response && action.response.entities) {
