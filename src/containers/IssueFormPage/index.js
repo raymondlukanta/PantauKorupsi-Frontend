@@ -7,8 +7,8 @@ import { Link } from 'react-router';
 import 'style!css!react-datepicker/dist/react-datepicker.css'
 
 const metaData = {
-    title: 'Redux Easy Boilerplate',
-    description: 'Start you project easy and fast with modern tools',
+    title: 'PANTAU KORUPSI',
+    description: 'Wadah kolaborasi KPK, ICW, dan publik untuk memantau dan berknotribusi terhadap arsip kasus korupsi',
     canonical: 'http://example.com/path/to/page',
     meta: {
         charset: 'utf-8',
