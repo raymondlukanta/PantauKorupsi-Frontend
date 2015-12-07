@@ -11,7 +11,7 @@ import { LoadingPage } from '../LoadingPage';
 import { Organization } from 'components/Organization';
 
 /*Redux */
-import { loadReadIssue } from 'actions/issues';
+import { loadReadIssue, loadVerifyIssue } from 'actions/issues';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -44,13 +44,20 @@ function mapStateToProps(state) {
 }
 
 @connect(
-  mapStateToProps,
-  dispatch => bindActionCreators({loadReadIssue}, dispatch)
+     mapStateToProps,
+     dispatch => bindActionCreators({loadReadIssue, loadVerifyIssue}, dispatch)
 )
 export class IssueDetail extends Component {
     
     constructor(props) {
         super(props)
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        this.props.loadVerifyIssue(this.issueId)
+        // console.log(this.props.values)
+        event.preventDefault();
     }
 
     componentWillMount() {
@@ -97,8 +104,18 @@ export class IssueDetail extends Component {
         if (procurement_url !== undefined) { url = (<p><b>Tautan: </b><a href={procurement_url} target="_blank">{procurement_url}</a></p>) }
 
         var unverified
-        if (verifier === undefined) { unverified = (<span> (<span className="text-danger">Belum Terverifikasi</span>)</span>) }
+        if (verifier === null) { 
+            unverified = (<span> (<span className="text-danger">Belum Terverifikasi</span>)</span>) 
+        }
 
+        var isModerator = localStorage.getItem('moderator_pantau_korupsi');
+        var verifyButton
+        if (verifier === null && isModerator === 'true') {
+            verifyButton = (<button className="btn btn-primary" onClick={this.handleClick}>Verifikasi Kasus</button>)
+        }
+
+        console.log("isModerator")
+        console.log(isModerator)
         return (
             <section className={styles}>
                 <DocumentMeta {...metaData} />
@@ -107,6 +124,7 @@ export class IssueDetail extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
 								<h2>{issue.title}<br />{unverified}</h2>
+                                { verifyButton }
                                 <p className="meta">
                                     Dicatat oleh {issue.user.name} | {issue.createdAt}
                                 </p>
@@ -130,12 +148,14 @@ export class IssueDetail extends Component {
                                 <div className="tab-content">
                                     <div id="issue-feeds" className="tab-pane fade in active">
                                         <table>
-                                            { !feeds && !feeds.length && <span>Tidak tersedia</span> }
-                                            {
-                                                feeds.map((feed, index) =>
-                                                    <Feed feed={feed}/>
-                                                )
-                                            }
+                                            <tbody>
+                                                { !feeds && !feeds.length && <span>Tidak tersedia</span> }
+                                                {
+                                                    feeds.map((feed, index) =>
+                                                        <Feed feed={feed}/>
+                                                    )
+                                                }
+                                                </tbody>
                                         </table>
                                         <div className="add-new-button">
                                             <Link to="/feeds/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Berita</Link>
@@ -143,12 +163,14 @@ export class IssueDetail extends Component {
                                     </div>
                                     <div id="issue-actors" className="tab-pane fade">
                                         <table>
-                                            { !involvements && !involvements.length && <span>Tidak tersedia</span>}
-                                            {
-                                                involvements.map((involvement, index) =>
-                                                    <Actor actor={involvement.actor} involvement={involvement}/>
-                                                )
-                                            }
+                                            <tbody>
+                                                { !involvements && !involvements.length && <span>Tidak tersedia</span>}
+                                                {
+                                                    involvements.map((involvement, index) =>
+                                                        <Actor actor={involvement.actor} involvement={involvement}/>
+                                                    )
+                                                }
+                                            </tbody>
                                         </table>
                                         <div className="add-new-button">
                                             <Link to="/actors/new" className="btn btn-primary add-issue-button" type="submit">+ Tambah Pihak Terkait</Link>

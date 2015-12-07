@@ -19,10 +19,12 @@ function entities(state = { authentication:{}}, action) {
 	    	alert("Login berhasil")
 	    	console.log(action.response.entities)
 		    localStorage.setItem('authToken_pantau_korupsi', action.response.entities.sessions[action.response.result].authToken);
-			  return merge({}, state, action.response.entities)
+		    localStorage.setItem('moderator_pantau_korupsi', action.response.entities.sessions[action.response.result].moderator);
+			  	return merge({}, state, action.response.entities)
 	    	break;
 	  	case UserActionTypes.DELETE_USER_SUCCESS:
 				localStorage.removeItem("authToken_pantau_korupsi")
+				localStorage.removeItem("moderator_pantau_korupsi")
 		  	return {
 		  		...state,
 		      users: [],
@@ -69,13 +71,21 @@ function errorMessage(state = null, action) {
   return state
 }
 
+function authentication(state = { 
+	authToken: localStorage.getItem('authToken_pantau_korupsi'),
+	isModerator: localStorage.getItem('moderator_pantau_korupsi')
+	}, action) {
+  		return state
+}
+
 const rootReducer = combineReducers({
   form: formReducer,
   routing: routeReducer,
   /* your reducers */
   items,
   entities,
-  errorMessage
+  errorMessage,
+  authentication
 });
 
 export default rootReducer;

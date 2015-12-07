@@ -7,6 +7,7 @@ export const IssuesActionTypes = keyMirror({
     READ_ISSUE_LIST_REQUEST: null, READ_ISSUE_LIST_SUCCESS: null, READ_ISSUE_LIST_FAILURE: null,
     UPDATE_ISSUE_LIST_REQUEST: null, UPDATE_ISSUE_LIST_SUCCESS: null, UPDATE_ISSUE_LIST_FAILURE: null,
     CREATE_ISSUE_REQUEST: null, CREATE_ISSUE_SUCCESS: null, CREATE_ISSUE_FAILURE: null, 
+    VERIFY_ISSUE_REQUEST: null, VERIFY_ISSUE_SUCCESS: null, VERIFY_ISSUE_FAILURE: null, 
   })
 
 function fetchReadIssue(issueId) {
@@ -86,5 +87,22 @@ export function loadCreateIssue(body) {
     body.started_at = "2015/12/07"
     
     return dispatch(fetchCreateIssue(body))
+  }
+}
+
+function fetchVerifyIssue(issueId) {
+  return {
+    [CALL_API]: {
+      types: [  IssuesActionTypes.VERIFY_ISSUE_REQUEST, IssuesActionTypes.VERIFY_ISSUE_SUCCESS, IssuesActionTypes.VERIFY_ISSUE_FAILURE ],
+      endpoint: 'issues/'+ issueId +'/verify',
+      method: 'GET',
+      schema: Schemas.ISSUE
+    }
+  }
+}
+
+export function loadVerifyIssue(issueId) {
+  return (dispatch, getState) => {
+    return dispatch(fetchVerifyIssue(issueId))
   }
 }

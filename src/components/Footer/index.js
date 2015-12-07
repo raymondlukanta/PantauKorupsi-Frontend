@@ -22,7 +22,7 @@ export class Footer extends Component {
               </form>
               <br />
               <br />
-              <a href="http://ec2-52-77-251-73.ap-southeast-1.compute.amazonaws.com">Pantau Pemilu</a> untuk
+              <a href="http://ec2-52-77-251-73.ap-southeast-1.compute.amazonaws.com">Pantau Korupsi</a> untuk
               <br />
               <a href="http://hackathonmerdeka.id">Hackaton Merdeka 3.0</a> dan <a href="http://www.indonesia.go.id">Indonesia</a>.
             </div>
