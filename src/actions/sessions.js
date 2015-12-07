@@ -2,7 +2,8 @@ import { CALL_API, Schemas } from '../middlewares/api'
 import keyMirror from 'keymirror'
 
 export const SessionActionTypes = keyMirror({
-    LOGIN_REQUEST: null, LOGIN_SUCCESS: null, LOGIN_FAILURE: null
+    LOGIN_REQUEST: null, LOGIN_SUCCESS: null, LOGIN_FAILURE: null,
+    LOGOUT: null,
   })
 
 function fetchLogin(body) {
@@ -21,4 +22,10 @@ export function doLogin(body) {
   return (dispatch, getState) => {
     return dispatch(fetchLogin(body))
   }
+}
+
+export function doLogout() {
+  return {
+    type: SessionActionTypes.LOGOUT
+  };
 }

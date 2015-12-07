@@ -22,12 +22,11 @@ function entities(state = { authentication:{}}, action) {
 		    localStorage.setItem('moderator_pantau_korupsi', action.response.entities.sessions[action.response.result].moderator);
 			  	return merge({}, state, action.response.entities)
 	    	break;
-	  	case UserActionTypes.DELETE_USER_SUCCESS:
-				localStorage.removeItem("authToken_pantau_korupsi")
-				localStorage.removeItem("moderator_pantau_korupsi")
+	  	case SessionActionTypes.LOGOUT:
+				localStorage.clear()
 		  	return {
 		  		...state,
-		      users: [],
+		      authentication: [],
 		      
 		    };
 	    	break;

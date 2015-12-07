@@ -19,7 +19,7 @@ import styles from './styles';
 
 const metaData = {
     title: 'PANTAU KORUPSI',
-    description: 'Wadah kolaborasi KPK, ICW, dan publik untuk memantau dan berknotribusi terhadap arsip kasus korupsi',
+    description: 'Wadah kolaborasi KPK, ICW, dan publik untuk memantau dan berkontribusi terhadap arsip kasus korupsi',
     canonical: 'http://example.com/path/to/page',
     meta: {
         charset: 'utf-8',

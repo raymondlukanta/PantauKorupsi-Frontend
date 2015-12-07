@@ -12,6 +12,7 @@ export class Header extends Component {
         super(props);
         this.hideHeader = this.hideHeader.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this._handleLogout = this._handleLogout.bind(this);
     }
 
     handleClick(event) {
@@ -38,6 +39,53 @@ export class Header extends Component {
         } = this.props;
 
 
+        var authenticationBox
+        
+        if (localStorage.getItem('authToken_pantau_korupsi') !== null && localStorage.getItem('authToken_pantau_korupsi') !== undefined) {
+            authenticationBox = (
+                <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs text-right">
+                    <a href="#" onClick={this._handleLogout}><b>Logout</b></a>
+                </div>
+            )
+        } else {
+            authenticationBox = (
+                <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs text-right">
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span className="caret"></span></a>
+                    <ul id="login-dp" className="dropdown-menu">
+                        <li>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <form className="form" onSubmit={this.handleClick} acceptCharset="UTF-8" id="login-nav">
+                                        <div className="form-group">
+                                             <label className="sr-only" for="exampleInputEmail2">Email address</label>
+                                             <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Email address" required {...email} />
+                                        </div>
+                                        <div className="form-group">
+                                             <label className="sr-only" for="exampleInputPassword2">Password</label>
+                                             <input type="password" className="form-control" id="exampleInputPassword2" placeholder="Password" required {...password} />
+                                             <div className="help-block text-right"><a href="">Forget the password ?</a></div>
+                                        </div>
+                                        <div className="form-group">
+                                             <button className="btn btn-primary btn-block" onClick={this.handleClick}>Sign in</button>
+                                        </div>
+                                        <div className="checkbox">
+                                             <label>
+                                             <input type="checkbox" /> keep me logged-in
+                                             </label>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div className="bottom text-center">
+                                    New here ? <Link to="/signup" activeClassName="active"><b>Join Us</b></Link>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            )
+        }
+
+
         return (
             <header className={`${styles}`} ref="header">
                 <div className="container">
@@ -55,43 +103,17 @@ export class Header extends Component {
                             </nav>
                         </div>
 
-                        <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs text-right">
-                            <a href="#" className="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span className="caret"></span></a>
-                            <ul id="login-dp" className="dropdown-menu">
-                                <li>
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <form className="form" onSubmit={this.handleClick} acceptCharset="UTF-8" id="login-nav">
-                                                <div className="form-group">
-                                                     <label className="sr-only" for="exampleInputEmail2">Email address</label>
-                                                     <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Email address" required {...email} />
-                                                </div>
-                                                <div className="form-group">
-                                                     <label className="sr-only" for="exampleInputPassword2">Password</label>
-                                                     <input type="password" className="form-control" id="exampleInputPassword2" placeholder="Password" required {...password} />
-                                                     <div className="help-block text-right"><a href="">Forget the password ?</a></div>
-                                                </div>
-                                                <div className="form-group">
-                                                     <button className="btn btn-primary btn-block" onClick={this.handleClick}>Sign in</button>
-                                                </div>
-                                                <div className="checkbox">
-                                                     <label>
-                                                     <input type="checkbox" /> keep me logged-in
-                                                     </label>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div className="bottom text-center">
-                                            New here ? <Link to="/signup" activeClassName="active"><b>Join Us</b></Link>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        {authenticationBox}
                     </div>
                 </div>
             </header>
         );
+    }
+
+    _handleLogout() {
+        localStorage.clear()
+        // this.props.doLogout()
+        this.props.history.pushState("/")
     }
 }
 

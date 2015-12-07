@@ -44,7 +44,7 @@ export class TopImage extends Component {
                                     transitionAppear={true}
                                     transitionAppearTimeout={1300}>
                                 <p>
-                                    Wadah kolaborasi KPK, ICW, dan publik untuk<br/>memantau dan berknotribusi terhadap arsip kasus korupsi 
+                                    Wadah kolaborasi KPK, ICW, dan publik untuk<br/>memantau dan berkontribusi terhadap arsip kasus korupsi 
                                 </p>
                                 </ReactCSSTransitionGroup>
                             </div>

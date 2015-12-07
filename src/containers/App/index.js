@@ -12,11 +12,11 @@ import { Footer } from 'components/Footer';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
-import { doLogin } from 'actions/sessions';
+import { doLogin, doLogout } from 'actions/sessions';
 
 @connect(
   state => state.form,
-  dispatch => bindActionCreators({ doLogin }, dispatch)
+  dispatch => bindActionCreators({ doLogin, doLogout }, dispatch)
 )
 export class App extends Component {
   constructor(props) {
