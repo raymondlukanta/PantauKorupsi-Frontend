@@ -1,10 +1,15 @@
 :local(.styles) {
-	.actor-thumbnail {
-		text-align: center;
+	.actor-thumbnail-container {
 		vertical-align: top;
-     	padding-top:10px;
+		padding-top: 10px;
+		text-align: center;
 	}
-  	.actor-thumbnail img {
-  		width: 70px;
-  	}
+	.actor-thumbnail {
+		width: 70px;
+	    height: 70px;
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    background-position: 50% 50%;
+	    border-radius: 35px;
+	}
 }
